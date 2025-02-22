@@ -1,58 +1,60 @@
 Mathematica Code for Creating 3D Diffusion Network
 ==
-This Mathematica code was developed to assist in the calculation of 3D ion diffusion networks within complex structures. For detailed methodology and background, please refer to the following paper:
+This Mathematica code was developed to assist in the DFT calculations of 3D networks for ion diffusion within complex structures, such as alkali ion diffusion in zeolites. For detailed methodology and background, please refer to the following paper:
 L. Wang and G. Luo, Exploration of Zeolites as High-Performance Electrode Protective Layers for Alkali-Metal Batteries, ACS Applied Materials & Interfaces, DOI: 10.1021/acsami.4c21152.
 
-Usage
-==
 Requirements
 ==
-The Mathematica code (3D_Diffusion_Network.nb) was written and tested using Mathematica 14 on macOS.
-When running on Windows, ensure to replace the path separator / with \\ in the code to avoid path issues.
+The Mathematica code was written and tested using Mathematica 14 on macOS.
+When running on Windows, ensure to replace the path separator "/" with "\\" in the code to avoid path issues.
 
 Execution Instructions
 ==
 Follow the steps below to run the code:
 
-A. VASP Geometry Optimization
-==
+A. DFT Optimization for Pure System without Adsorbed Species
+=
 Navigate to the directory zeolites/XXX_XX/1_zeolite_GeoOpt.
-Perform a VASP geometry optimization for the pure zeolite structure.
+Perform a VASP geometry optimization for a pure structure.
 
-B. Set Up Directories and Initial Parameters
+B. Set Up Initial Parameters and Create Required Folders
 ==
-Using the Mathematica code, initialize the following directory structure and create the required folders:
+Use the Mathematica code to set up the initial parameters and create the required folders:
 
-2_quick_GeoOpt: Perform a quick optimization by relaxing only the alkali ion positions.
-3_normal_GeoOpt: Fully optimize the structure.
-4_IF_GeoOpt: Fully optimize both the initial and final-state structures for the cNEB calculation.
-5_cNEB_Opt: Perform the cNEB calculation.
-6_3D_network: Generate the 3D diffusion network.
+2_quick_GeoOpt: for quick geometrical optimizations by relaxing only the positions of diffusion species.
 
-C. Quick Screening of Sampling Sites
+3_normal_GeoOpt: for fully geometrical optimizations.
+
+4_IF_GeoOpt: for fully geometrical optimizations of the initial and final-state structures for cNEB calculations.
+
+5_cNEB_Opt: for cNEB calculations.
+
+6_3D_network: for generation of 3D diffusion network.
+
+C. Screening of Sampling Sites
 ==
-Use the Mathematica code to create POSCAR files with alkali ions placed at inequivalent sampling sites. These files will be saved under the 2_quick_GeoOpt folder. This step is designed for a quick screening of sampling sites, with only the alkali ion positions being relaxed.
+Use the Mathematica code to create POSCAR files with diffusion species placed at inequivalent sampling sites. These files will be saved under the 2_quick_GeoOpt folder.
 
-D. DFT Calculation for Quick Optimization
+D. Quick DFT Optimization
 ==
-Run DFT calculations in the 2_quick_GeoOpt folder.
+Run DFT calculations in the 2_quick_GeoOpt folder. This step is designed for a quick screening of sampling sites, with only the diffusion species positions being relaxed.
 Use the Mathematica code to identify inequivalent sampling sites from the optimized results.
-Prepare POSCAR files for fully relaxed DFT calculations, which will be saved under the 3_normal_GeoOpt folder.
+Prepare POSCAR files for fully DFT optimizations, which will be saved under the 3_normal_GeoOpt folder.
 
-E. DFT Calculation for Full Optimization
+E. Run Fully DFT Optimization and Prepare Structural Files for Initial and Final states 
 ==
 Run DFT calculations in the 3_normal_GeoOpt folder.
 Use the Mathematica code to identify inequivalent sampling sites from the optimized results and determine adsorption sites for the cNEB calculations.
-Note: These adsorption sites should be re-optimized for reliability.
+Currently, these initial and final-state sites for cNEB calculations need to be re-optimized to ensure reliability.
 The files will be saved under the 4_IF_GeoOpt folder.
 
-F. Initial and Final State Collection for cNEB
+F. Run DFT Optimization for the Initial and Final States, and Prepare Files for cNEB Calculations
 ==
 Run DFT calculations in the 4_IF_GeoOpt folder.
-Use the Mathematica code to collect the structures of the initial and final states for the cNEB calculations.
+Use the Mathematica code to prepare the structures of the initial and final states for the cNEB calculations.
 The files will be saved in the 5_cNEB_Opt folder.
 
-G. cNEB Calculation
+G. Run cNEB Calculations and Collect Energy Data
 ==
 Complete the cNEB calculations in the 5_cNEB_Opt folder.
 Use the Mathematica code to collect and compile the energy data from these calculations.
@@ -66,4 +68,4 @@ This file can be visualized using OVITO.
 
 Example Data
 ==
-An example dataset is provided in the zeolites/EDI_Li folder for testing purposes.
+An example is provided in the zeolites/EDI_Li folder for testing purposes.
