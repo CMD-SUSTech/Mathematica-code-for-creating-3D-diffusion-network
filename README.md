@@ -5,13 +5,13 @@ L. Wang and G. Luo, Exploration of Zeolites as High-Performance Electrode Protec
 
 Usage
 ==
-1. Requirements
-   ==
+Requirements
+==
 The Mathematica code (3D_Diffusion_Network.nb) was written and tested using Mathematica 14 on macOS.
 When running on Windows, ensure to replace the path separator / with \\ in the code to avoid path issues.
 
-2. Execution Instructions
-   ==
+Execution Instructions
+==
 Follow the steps below to run the code:
 
 A. VASP Geometry Optimization
@@ -64,6 +64,6 @@ Using the compiled energy data and other structural information, run the Mathema
 The output file (dump_XXX-traj.xyz) will be saved in the 6_3D_network folder.
 This file can be visualized using OVITO.
 
-3. Example Data
-   ==
+Example Data
+==
 An example dataset is provided in the zeolites/EDI_Li folder for testing purposes.
